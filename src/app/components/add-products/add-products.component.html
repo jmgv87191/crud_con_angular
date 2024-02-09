@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="card border-primary mb-3" style="width: 400px;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+
+            <div class="form-group">
+
+                <form [formGroup]="form" (ngSubmit)="addProduct()" >
+                    <div class="form-floating mb-3">
+                        <input formControlName="name" type="text" class="form-control" id="floatingInput" placeholder="Nombre">
+                        <span *ngIf="form.get('name')?.hasError('required')  && form.get('name')?.touched" > Introducir un nombre </span>
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input formControlName="description" type="text" class="form-control" id="floatingInput" placeholder="Descripcion">
+                        <span *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched " > Introducior la Descripcion </span>
+                        <label for="floatingInput">Descripcion</label>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input formControlName="price" type="number" class="form-control" id="floatingInput" placeholder="Precio">
+                        <span *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched" >Introducior el precio</span>
+                        <label for="floatingInput">Precio</label>
+                    </div>
+    
+                    <div class="form-floating mb-3">
+                        <input formControlName="stock" type="number" class="form-control" id="floatingInput" placeholder="Stock">
+                        <span *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched" > Introducir el stock</span>
+                        <label for="floatingInput">Stock</label>
+                    </div>
+    
+                    <div class="cont_btns">
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Agregar</button>
+                        <button  routerLink="" type="button" class="btn btn-danger">Regresar</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
