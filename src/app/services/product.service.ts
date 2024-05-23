@@ -32,4 +32,12 @@ export class ProductService {
     return this.http.post<void>(  this.app + this.api, (body) )
   }
 
+  getProduct( id: number ):Observable<Product>{
+    return this.http.get<Product>( this.app + this.api + id )
+  }
+
+  updateProduct( id:number, body:Product ):Observable<void>{
+    return this.http.put<void>( this.app + this.api + id, (body) )
+  }
+
 }

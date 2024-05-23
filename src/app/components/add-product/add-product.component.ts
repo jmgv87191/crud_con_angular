@@ -43,12 +43,19 @@ export class AddProductComponent implements OnInit {
     
 
     if (this.id === 0 ) {
-      console.log('desde agregar', this.form.value)
 
     }else{
 
-      this.titulo ='Editar'
-      console.log('desde editar',this.form.value)
+      this._productService.getProduct(this.id).subscribe((data)=>{
+        console.log(data)
+        this.form.setValue({
+          name: data.name,
+          description: data.description,
+          price: data.price,
+          stock: data.stock,
+        })
+      })
+
 
     }
 
@@ -66,16 +73,17 @@ export class AddProductComponent implements OnInit {
       }
 
       if (this.id === 0 ) {
-
         
         this._productService.createProduct( this.producto ).subscribe(()=>{
             this.router.navigate(['']);
-          this.showSuccess()
+            this.showSuccess()
         })
 
       }else{
-
-
+        this._productService.updateProduct( this.id, this.producto ).subscribe(()=>{
+          this.router.navigate(['']);
+          this.showUpdate()
+      })
       }
 
     
@@ -83,6 +91,12 @@ export class AddProductComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(`El producto ${this.form.value.name} fue agregado con exito` , 'Agregado!',{    
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+  });}
+
+  showUpdate() {
+    this.toastr.success(`El producto ${this.form.value.name} fue actualizado con exito` , 'Actualizado!',{    
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
   });}
