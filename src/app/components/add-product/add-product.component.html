@@ -1,0 +1,52 @@
+@if ( loader ) {
+    <div class="progress mt-5 " style="width: 80%; margin: 0 auto;" >
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+    </div>
+
+}@else {
+    <div class="container">
+    
+        <div class="card text-white bg-secondary mb-3" style="width: 400px;">
+        
+            <div class="card-header text-center"> {{ titulo }}  producto</div>
+    
+            <div class="card-body">
+    
+                <div>
+                    <form action="" [formGroup]="form" (ngSubmit)="addProduct()" >
+    
+                        <div class="form-floating mb-3">
+                            <input formControlName="name" type="text" class="form-control" id="floatingInput" placeholder="Nombre">
+                            <label for="floatingInput">Nombre</label>
+                        </div>
+        
+                        <div class="form-floating mb-3">
+                            <input formControlName="description" type="text" class="form-control" id="floatingInput" placeholder="Descripcion">
+                            <label for="floatingInput">Descripcion</label>
+                        </div>
+        
+                        <div class="form-floating mb-3">
+                            <input formControlName="price" type="number" class="form-control" id="floatingInput" placeholder="Precio">
+                            <label for="floatingInput">Precio</label>
+                        </div>
+        
+                        <div class="form-floating mb-3">
+                            <input formControlName="stock" type="number" class="form-control" id="floatingInput" placeholder="Stock">
+                            <label for="floatingInput">Stock</label>
+                        </div>
+        
+                        <div class="cont_btns">
+                            <button  type="submit" class="btn btn-primary btn-sm">Aceptar</button>
+                            <button routerLink="" type="button" class="btn btn-danger btn-sm">Regresar</button>
+                        </div>
+                    </form>
+    
+                </div>
+    
+            </div>  
+        </div>
+    
+    </div>
+}
+
+
